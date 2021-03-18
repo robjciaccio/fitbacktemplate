@@ -8,4 +8,6 @@ const usersRouter = express.Router()
 
 usersRouter.get('/', usersController.getUsers)
 
+usersRouter.post('/new', usersController.createUser)
+
 module.exports = usersRouter
