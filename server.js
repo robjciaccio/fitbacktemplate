@@ -20,6 +20,9 @@ app.use((req, res, next) => {
   next()
 })
 
+const usersRouter = require('./api/users')
+app.use('/users', usersRouter)
+
 const PORT = process.env.PORT || 4001
 
 app.listen(PORT, () => {
