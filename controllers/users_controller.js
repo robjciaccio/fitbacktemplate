@@ -36,12 +36,35 @@ const getUsers = async (req, res, next) => {
 
 const createUser = async (request, response, next) => {
   const now = new Date()
-  const { first_name, last_name } = request.body
+  const {
+    first_name,
+    last_name,
+    birthday,
+    gender,
+    email,
+    password,
+    address,
+    city,
+    state,
+    phone,
+  } = request.body
 
   try {
     await client.query(
-      'INSERT INTO users (first_name, last_name) VALUES ($1, $2) RETURNING *',
-      [first_name, last_name],
+      'INSERT INTO users (first_name, last_name, birthday, gender, email, password, address, city, state, phone, join_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+      [
+        first_name,
+        last_name,
+        birthday,
+        gender,
+        email,
+        password,
+        address,
+        city,
+        state,
+        phone,
+        now,
+      ],
       (err, result) => {
         console.log(result)
         if (result == undefined) {
