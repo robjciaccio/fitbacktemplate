@@ -10,4 +10,6 @@ usersRouter.get('/', usersController.getUsers)
 
 usersRouter.post('/new', usersController.createUser)
 
+usersRouter.post('/login', usersController.loginUser)
+
 module.exports = usersRouter
